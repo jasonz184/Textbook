@@ -1,24 +1,24 @@
-public class Textbook
+public class Textbook extends Book
 {
     private int edition;
-    private Book b;
     public Textbook(String title, double price, int ed)
     {
+        super(title, price);
         edition = ed;
-        b = new Book(title, price);
     }
     public int getEdition()
     {
         return edition;
     }
-    public boolean canSubstituteFor(Textbook book)
+    public String getBookInfo()
     {
-        if(b.getTitle().equals("book.getTitle()"))
+        return super.getBookInfo() + "-" + edition;
+    }
+    public boolean canSubstituteFor(Textbook other)
+    {
+        if(getTitle().equals(other.getTitle()))
         {
-            if(b.getEdition() > book.getEdition())
-            {
-                return true;
-            }
+            return edition >= other.edition;
         }
         return false;
     }
